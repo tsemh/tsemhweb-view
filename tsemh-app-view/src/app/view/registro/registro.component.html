@@ -1,0 +1,36 @@
+<main class="page">
+
+<div class="categorias-itens">
+  <div class="categorias">
+    <tsemh-categoria  (categoriaSelecionada)="atualizarCategoria($event)">
+    </tsemh-categoria>
+  </div>
+
+  <div class="tudo-lista">
+    <div class="h2">
+      <h2> {{ tituloMain }} </h2>
+    </div>
+
+    <div class="recipiente-listas">
+      <div class="recipiente-lista" *ngFor="
+    let registro of registros | paginate: { itemsPerPage: 8, currentPage: page }
+  "(click)="selecionarRegistro(registro.id)" (click)="redirecionaPara('detalhes')">
+  
+          <h5>{{ registro.nome }}</h5>
+          <img src="../../../assets/logo/logo-hori-bco.png" alt=" " class="img-registro">
+        
+        <div class="tag-lista">
+          <a *ngFor="let categoria of categorias" (click)="redirecionaPara(categoria.link)" class="tag"> {{ categoria.titulo }}
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="paginacao">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+
+  </div>
+</div>
+</main>

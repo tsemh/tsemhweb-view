@@ -1,0 +1,22 @@
+
+footer {
+  height: 8rem;
+  width: 100vw;
+  text-align: center;
+  background-color: #282a36;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+p {
+  margin-bottom: 0;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 305px) {
+  footer {
+    height: 16rem;
+  }
+}

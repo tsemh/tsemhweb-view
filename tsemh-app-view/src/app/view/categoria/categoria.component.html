@@ -1,0 +1,9 @@
+<div class="recipiente-categorias">
+  <h3>Categorias</h3>
+  <div class="lista-categorias">
+      <div class="categorias">
+        <button (click)="atualizaPagina()">Ver tudo</button>
+        <button *ngFor="let categoria of categorias" (click)="selecionarCategoria(categoria.id)"> {{ categoria.titulo }} </button>
+      </div>
+  </div>  
+</div>  

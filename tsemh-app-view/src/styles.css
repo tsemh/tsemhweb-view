@@ -1,0 +1,56 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+main {
+  padding: 150px 0 150px 0;
+}
+body {
+  background-color: #44475a;
+}
+.page {
+  justify-content: center;
+  width: 90vw;
+  max-width: 1420px;
+  margin: 0 auto;
+  min-height: calc(100vh - (6rem + 4rem));
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0 0 1.38rem 0;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+h1 {
+  color: #fff;
+}
+h2, h3 {
+  width: auto;
+  color: #ff79c6;
+  text-transform: uppercase;
+  text-align: center;
+}
+h4 {
+  color: #fff;
+}
+h5 {
+  color: #f8f8f2;
+}
+.h2 {
+  width: 100%;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color:#bd93f9;
+}
+a:hover {
+  color: #ff79c6;
+  cursor: pointer;
+}
+/* NAVIGATION */
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}

@@ -1,0 +1,128 @@
+<main class="page">
+  <section class="setor-inicial">
+
+    <section class="setor-usuario">
+      <form [formGroup]="formUsuario" (submit)="enviarUsuario()">
+
+        <div class="form-group">
+          <div class="imagePreview">
+            <input type="file" name="image" accept="image/*" class="form-control imageInput form-control-image">
+          </div>
+        </div>
+
+        <div class="form-group substantivos-proprio">
+          <label class="label-usuario">Nome:</label>
+          <input type="text" formControlName="nome" class="form-control input-usuario substantivo-proprio">
+        </div>
+
+        <div class="form-group substantivos-proprio">
+          <label class="label-usuario">Titulo:</label>
+          <input type="text" formControlName="titulo" class="form-control input-usuario substantivo-proprio">
+        </div>
+
+        <div class="form-group">
+          <label class="label-usuario">Descrição:</label>
+          <textarea rows="10" formControlName="descricao" class="form-control input-usuario"></textarea>
+        </div>
+
+        <div class="form-group btn-div">
+          <button class="btn-editar">Editar</button>
+        </div>
+
+      </form>
+    </section>
+
+    <section class="setor-vitrine">
+      <section class="setor-interno-projetos">
+        <div class="tipos-div">
+          <h4 class="botao-tipo" *ngFor="let tipo of tiposDeRegistro" (click)="CliqueTipo(tipo)">{{ tipo }}s</h4>
+        </div>
+        <table class="table">
+          <thead>
+            <th>ID</th>
+            <th>Titulo</th>
+          </thead>
+          <tbody>
+            <tr class="hover" (click)="cliqueRegistro(template, registro.id)"
+              *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: page }">
+              <td>{{ registro.id }}</td>
+              <td>{{ registro.nome }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <div class="paginacao" *ngIf="visaoPaginacao == true">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </section>
+    <button class="btn-adicionar-registro" (click)="abreCriaRegistro(template)">+</button>
+  </section>
+
+</main>
+
+
+<ng-template #template>
+
+  <div class="modal-header center">
+    <h3 class="modal-title">Registro</h3>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="formRegistro">
+
+      <div class="form-group">
+        <label class="label-registro">Nome</label>
+        <input formControlName="nome" class="form-control input-style">
+      </div>
+
+      <div class="form-group">
+        <label class="label-registro">Link</label>
+        <input formControlName="link" class="form-control input-style">
+      </div>
+      
+      <div class="agrupa-texto">
+        <div class="form-group">
+          <label class="label-registro">Tipo</label>          
+            <select class="form-control input-style" formControlName="tipo">
+                <option *ngFor="let tipo of preTiposDeRegistro" [ngValue]="tipo">{{ tipo}}</option> 
+              </select>
+        </div>
+        
+        <div class="form-group" *ngIf="editaRegistro == false">
+          <label class="label-registro">Categoria</label>
+          <input class="form-control input-style" formControlName="categoria" list="categoriasList">
+          <datalist id="categoriasList">
+            <option *ngFor="let categoria of categorias" [value]="categoria.titulo">{{ categoria.titulo }}</option>
+          </datalist>
+        </div>
+
+        <div class="form-group" *ngIf="editaRegistro == true">
+          <label class="label-registro">Categoria</label>
+          <select class="form-control input-style" formControlName="categoria">
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{ categoria.titulo }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="label-registro">Destaque</label>
+          <select class="form-control input-style" formControlName="destaque">
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>   
+      </div>     
+
+      <div class="form-group">
+        <label class="label-registro">Texto</label>
+        <textarea rows="50" formControlName="descricao" class="form-control input-style"></textarea>
+      </div>
+
+      <div class="form-group editar-excluir-div">
+        <button class="btn-editar" *ngIf="registro?.id != 0" (click)="enviarRegistro()">Editar</button>
+        <button class="btn-excluir" *ngIf="registro?.id != 0" (click)="deletaRegistro(registro.id)">Excluir</button>
+        <button class="btn-adicionar" *ngIf="registro?.id == 0" (click)="criarRegistro()">Adicionar</button>
+      </div>
+    </form>
+
+  </div>
+</ng-template>

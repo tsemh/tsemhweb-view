@@ -1,0 +1,23 @@
+<main class="page">
+
+    <header>
+      <section class="titulo-data">
+        <h2>{{ registro.nome }}</h2>
+        <h5>{{ dataCriacaoFormatada }}</h5>
+      </section>
+    </header>
+
+    <div class="showme-div">
+      <a class="showme" *ngIf="registro.tipo != 'experiencia' && registro.tipo != 'artigo'" href="{{registro.link}}" target="_blank">
+        Show me the Code
+      </a>
+    </div>    
+
+    <section class="secao-artigo">
+      <article class="artigo">
+        <div class="paragrafos">
+          <p *ngFor="let paragrafo of paragrafos">{{ paragrafo }}</p>
+        </div>
+      </article>
+    </section>
+</main>

@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div [ngClass]="{ 'nav-center': !isHamburgerMenu, 'hamburger': isHamburgerMenu }">
+    <!-- header -->
+    <div class="nav-header" [ngClass]="{'center': isHamburgerMenu }">
+      <a routerLink="" class="nav-logo">
+        <img src="../../../assets/logo/logo-vert-bco.png" class="logo" alt="">
+      </a>
+    </div>
+
+    <!-- Links -->
+    <div [ngClass]="{ 'nav-links': !isHamburgerMenu, 'hamburger-links': isHamburgerMenu }">
+      <a routerLink="home" class="nav-link">Home</a>
+      <a *ngFor="let tipo of tiposDeRegistro"  (click)="pegaTipo(tipo)" routerLink="registros/{{tipo}}s"
+        class="nav-link">{{ tipo }}s</a>
+
+      <ul class="socials">
+        <li class="li-sociais" [ngClass]="{'center': isHamburgerMenu }">
+          <a class="nav-link dropdown-sociais" [ngClass]="{'none': isHamburgerMenu }">Sociais &dtrif;</a>
+          <ul class="dropdown">
+            <li><a href="https://github.com/tsemh" class="nav-link link-social" target="_blank">Github</a></li>
+            <li><a href="https://www.tabnews.com.br/tsemh" class="nav-link link-social" target="_blank">Tabnews</a></li>
+            <li><a href="https://www.linkedin.com/in/tsemh/" class="nav-link link-social" target="_blank">Linkedin</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div *ngIf="isLogged == true" class="logado-div" [ngClass]="{'flex-end': isHamburgerMenu }">
+        <a routerLink="painel-de-controle" class="nav-link" [ngClass]="{'margin-right': isHamburgerMenu }">Painel</a>
+        <span class="nav-link" (click)="sair()">Sair</span>
+      </div>
+
+    </div>
+    <div class="div-btn" [ngClass]="{'move-menu': isHamburgerMenu }">
+      <button class="btn nav-btn" type="button" (click)="hamburguerClique()"></button>
+    </div>
+  </div>  
+</nav>

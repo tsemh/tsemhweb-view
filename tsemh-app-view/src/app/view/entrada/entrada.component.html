@@ -1,0 +1,25 @@
+
+<div class="modal-header center">
+  <h3 class="modal-title">Entrada VIP</h3>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formEntrada" (submit)="enviarEntrada()">
+
+    <div class="form-group">
+      <label for="formGroupExampleInput">E-mail</label>
+      <input type="email"  #email formControlName="email" placeholder="Digite seu e-mail" class="form-control input-style">
+    </div>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput">Senha</label>
+      <input [type]="visualizaSenha? 'text' : 'password'" placeholder="Digite sua senha" formControlName="senha" class="form-control input-style">
+      <span class="ver-senha" (click)="verSenha()">{{ visualizaSenhaText }}</span>
+    </div>
+
+    <div class="form-group left-side">
+      <button class="btn">Entrar</button>
+    </div>
+
+  </form>
+
+</div>
